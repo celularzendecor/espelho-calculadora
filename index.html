@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"/>
+<title>Calculadora de Espelhos</title>
+<style>
+        body { font-family: Arial, sans-serif; margin: 20px; background: #f7f7f7; }
+        h2 { background: #ddd; padding: 10px; }
+        .modelo { background: #fff; border: 1px solid #ccc; margin-bottom: 20px; padding: 15px; }
+        label { display: inline-block; width: 80px; }
+        input { width: 100px; padding: 5px; margin-right: 10px; }
+        .resultado { margin-top: 10px; font-weight: bold; }
+    </style>
+</head>
+<body>
+<h1>Calculadora de Espelhos</h1>
+<p>Insira a largura e altura (em milímetros) para estimar o valor:</p>
+<div class="modelo">
+<h2>ESPELHO COM BORDA EM LACA</h2>
+<p>Base em MDF 18mm na cor escolhida. Espelho lapidado colado sobre base. Suporte de fixação incluso.</p>
+<label>Largura:</label><input id="largura1" placeholder="mm" oninput="calcular(1)" type="number"/>
+<label>Altura:</label><input id="altura1" placeholder="mm" oninput="calcular(1)" type="number"/>
+
+<div class="resultado" id="resultado1"></div>
+</div>
+<div class="modelo">
+<h2>ESPELHO COM BORDA EM LACA + LED</h2>
+<p>Base em MDF 18mm com LED lateral. Espelho lapidado colado. Suporte incluso. Não acompanha tecla liga/desliga.</p>
+<label>Largura:</label><input id="largura2" placeholder="mm" oninput="calcular(2)" type="number"/>
+<label>Altura:</label><input id="altura2" placeholder="mm" oninput="calcular(2)" type="number"/>
+
+<div class="resultado" id="resultado2"></div>
+</div>
+<div class="modelo">
+<h2>ESPELHO SEM BORDA</h2>
+<p>Espelho lapidado colado sobre base preta. Suporte incluso.</p>
+<label>Largura:</label><input id="largura3" placeholder="mm" oninput="calcular(3)" type="number"/>
+<label>Altura:</label><input id="altura3" placeholder="mm" oninput="calcular(3)" type="number"/>
+
+<div class="resultado" id="resultado3"></div>
+</div>
+<div class="modelo">
+<h2>ESPELHO SEM BORDA COM LED LATERAL</h2>
+<p>Espelho com LED lateral colado sobre base. Suporte incluso. Não acompanha tecla liga/desliga.</p>
+<label>Largura:</label><input id="largura4" placeholder="mm" oninput="calcular(4)" type="number"/>
+<label>Altura:</label><input id="altura4" placeholder="mm" oninput="calcular(4)" type="number"/>
+
+<div class="resultado" id="resultado4"></div>
+</div>
+<div class="modelo">
+<h2>ESPELHO CAMARIM</h2>
+<p>Espelho com moldura estilo camarim e iluminação embutida.</p>
+<label>Largura:</label><input id="largura5" placeholder="mm" oninput="calcular(5)" type="number"/>
+<label>Altura:</label><input id="altura5" placeholder="mm" oninput="calcular(5)" type="number"/>
+
+<div class="resultado" id="resultado5"></div>
+</div>
+
+
+<script>
+function calcular(index) {
+    const largura = parseFloat(document.getElementById("largura" + index).value);
+    const altura = parseFloat(document.getElementById("altura" + index).value);
+
+    if (isNaN(largura) || isNaN(altura) || largura <= 0 || altura <= 0) {
+        alert("Por favor, insira largura e altura válidas.");
+        return;
+    }
+
+    let valor = 0;
+    let area_m2 = (largura * altura) / 1000000;
+
+    switch(index) {
+        case 1: // ESPELHO COM BORDA EM LACA
+            const perimetro1 = ((largura + altura) * 2) / 1000;
+            const areaCorrigida1 = ((largura + 50) * (altura + 50)) / 1000000;
+            valor = (perimetro1 * 134) + (areaCorrigida1 * 249) + 93;
+            break;
+
+        case 2: // ESPELHO COM BORDA EM LACA + LED
+            const perimetro2 = ((largura + altura) * 2) / 1000;
+            const areaCorrigida2 = ((largura + 50) * (altura + 50)) / 1000000;
+            valor = (perimetro2 * 189) + (areaCorrigida2 * 249) + 185;
+            break;
+
+        case 3: // ESPELHO SEM BORDA
+            const perimetro3 = ((largura - 50 + altura - 50) * 2) / 1000;
+            const areaCorrigida3 = ((largura + 50) * (altura + 50)) / 1000000;
+            valor = (perimetro3 * 71) + (areaCorrigida3 * 249) + 93;
+            break;
+
+        case 4: // ESPELHO SEM BORDA COM LED LATERAL
+            const perimetro4 = ((largura + altura) * 2) / 1000;
+            const areaCorrigida4 = ((largura + 50) * (altura + 50)) / 1000000;
+            valor = (perimetro4 * 126) + (areaCorrigida4 * 249) + 185;
+            break;
+
+        case 5: // ESPELHO CAMARIM
+            const perimetro5 = ((largura + altura) * 2) / 1000;
+            const areaCorrigida5 = ((largura + 50) * (altura + 50)) / 1000000;
+            valor = (perimetro5 * 188.7) + (areaCorrigida5 * 555) + 200;
+            break;
+
+        default:
+            valor = 0;
+    }
+
+    document.getElementById("resultado" + index).innerText = 
+        "Área: " + area_m2.toFixed(3) + " m² | Valor estimado: R$ " + valor.toFixed(2);
+}
+</script>
+
+
+</body>
+</html>
