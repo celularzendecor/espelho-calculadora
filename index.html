@@ -3,7 +3,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Calculadora de Espelhos</title>
+    <title>Valor m2 Alla Design</title>
     <style>
         body { font-family: Arial, sans-serif; margin: 20px; background: #f7f7f7; }
         h2 { background: #ddd; padding: 10px; }
@@ -16,11 +16,11 @@
 <body>
 
 <h1>Calculadora de Espelhos</h1>
-<p>Insira a largura e altura (em milímetros) para estimar o valor:</p>
+<p>Insira a largura e altura (em milímetros) para calcular o valor:</p>
 
 <div class="modelo">
     <h2>ESPELHO COM BORDA EM LACA</h2>
-    <p>Base em MDF 18mm na cor escolhida. Espelho lapidado colado sobre base. Suporte de fixação incluso.</p>
+    <p>Base em MDF 18mm com borda 3mm ou 18mm. Espelho lapidado.Suporte de fixação incluso.</p>
     <label>Largura:</label><input type="number" id="largura1" value="0" placeholder="mm" oninput="calcular(1)">
     <label>Altura:</label><input type="number" id="altura1" value="0" placeholder="mm" oninput="calcular(1)">
     <div class="resultado" id="resultado1"></div>
@@ -28,7 +28,7 @@
 
 <div class="modelo">
     <h2>ESPELHO COM BORDA EM LACA + LED</h2>
-    <p>Base em MDF 18mm com LED lateral. Espelho lapidado colado. Suporte incluso. Não acompanha tecla liga/desliga.</p>
+    <p>Base em MDF 18mm com borda 3mm ou 18mm. Espelho lapidado.Suporte de fixação incluso. Acionamento touch convencional.</p>
     <label>Largura:</label><input type="number" id="largura2" value="0" placeholder="mm" oninput="calcular(2)">
     <label>Altura:</label><input type="number" id="altura2" value="0" placeholder="mm" oninput="calcular(2)">
     <div class="resultado" id="resultado2"></div>
@@ -36,7 +36,7 @@
 
 <div class="modelo">
     <h2>ESPELHO SEM BORDA</h2>
-    <p>Espelho lapidado colado sobre base preta. Suporte incluso.</p>
+    <p>Espelho lapidado colado sobre base preta(oculta). Suporte incluso.</p>
     <label>Largura:</label><input type="number" id="largura3" value="0" placeholder="mm" oninput="calcular(3)">
     <label>Altura:</label><input type="number" id="altura3" value="0" placeholder="mm" oninput="calcular(3)">
     <div class="resultado" id="resultado3"></div>
@@ -44,18 +44,34 @@
 
 <div class="modelo">
     <h2>ESPELHO SEM BORDA COM LED LATERAL</h2>
-    <p>Espelho com LED lateral colado sobre base. Suporte incluso. Não acompanha tecla liga/desliga.</p>
+    <p>Espelho lapidado colado sobre base preta(oculta) com led lateral 3500k Branco Neutro. Suporte incluso.Acionamento touch convencional</p>
     <label>Largura:</label><input type="number" id="largura4" value="0" placeholder="mm" oninput="calcular(4)">
     <label>Altura:</label><input type="number" id="altura4" value="0" placeholder="mm" oninput="calcular(4)">
     <div class="resultado" id="resultado4"></div>
 </div>
 
 <div class="modelo">
-    <h2>ESPELHO CAMARIM</h2>
-    <p>Espelho com moldura estilo camarim e iluminação embutida.</p>
+    <h2>ESPELHO CAMARIM BIA</h2>
+    <p>Espelho com borda 3mm ao redor com luz frontal 4000k Branco Neutro 240leds/metro com acionamento Touch convencional.</p>
     <label>Largura:</label><input type="number" id="largura5" value="0" placeholder="mm" oninput="calcular(5)">
     <label>Altura:</label><input type="number" id="altura5" value="0" placeholder="mm" oninput="calcular(5)">
     <div class="resultado" id="resultado5"></div>
+</div>
+
+<div class="modelo">
+    <h2>ESPELHO CAMARIM AURA</h2>
+    <p>Espelho sem borda (somente vidro visível) com luz frontal 4000k Branco Neutro 240leds/metro com acionamento Touch convencional.</p>
+    <label>Largura:</label><input type="number" id="largura6" value="0" placeholder="mm" oninput="calcular(6)">
+    <label>Altura:</label><input type="number" id="altura6" value="0" placeholder="mm" oninput="calcular(6)">
+    <div class="resultado" id="resultado6"></div>
+</div>
+
+<div class="modelo">
+    <h2>ESPELHO CAMARIM ZARA</h2>
+    <p>Espelho com moldura bord 3mm com luz indireta frontal 4000k Branco Neutro 240leds/metro com acionamento soft Touch.</p>
+    <label>Largura:</label><input type="number" id="largura7" value="0" placeholder="mm" oninput="calcular(7)">
+    <label>Altura:</label><input type="number" id="altura7" value="0" placeholder="mm" oninput="calcular(7)">
+    <div class="resultado" id="resultado7"></div>
 </div>
 
 <script>
@@ -97,6 +113,17 @@ function calcular(index) {
             const areaCorrigida5 = ((largura + 50) * (altura + 50)) / 1000000;
             valor = (perimetro5 * 188.7) + (areaCorrigida5 * 555) + 200;
             break;
+        case 6:
+            const perimetro6 = ((largura + altura) * 2) / 1000;
+            const areaCorrigida6 = ((largura + 50) * (altura + 50)) / 1000000;
+            valor = (perimetro6 * 126) + (areaCorrigida6 * 555) + 200;
+            break; 
+        case 7:
+            const perimetro7 = ((largura + altura) * 2) / 1000;
+            const areaCorrigida7 = ((largura + 50) * (altura + 50)) / 1000000;
+            valor = (perimetro7 * 203) + (areaCorrigida7 * 249) + 352;
+            break;
+
         default:
             valor = 0;
     }
@@ -108,3 +135,4 @@ function calcular(index) {
 
 </body>
 </html>
+
